@@ -89,6 +89,7 @@ function install_gdrive() {
   cd
   print_info "ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴀᴄᴄᴏᴜɴᴛ"
   user_gdrive
+  rm -r gd
   print_success "ɪɴꜱᴛᴀʟʟ ɢᴅʀɪᴠᴇ"
 }
 add_token
