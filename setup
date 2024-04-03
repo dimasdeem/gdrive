@@ -17,7 +17,6 @@ DB='\e[90;1m'
 
 # Information Repositories Google Drive
 ID_gdrive="1HPD9HWppdGOJSRFeGVLtA7rXzKzycXQG"
-#ID_api_gd="ganti sama ID api lu"
 
 # Tools Download With Curl
 function download_file() {
@@ -28,7 +27,7 @@ function download_file() {
 function print_install() {
   clear
   echo -e "${BB} ┌─────────────────────────────────────────────────────┐${NC}"
-  echo -e "${GB}               ──── [ $1 ] ────${NC}"
+  echo -e "${GB}             ──── [ $1 ] ────${NC}"
   echo -e "${BB} └─────────────────────────────────────────────────────┘${NC}"
   sleep 1
 }
@@ -56,6 +55,20 @@ else
 fi
 }
 
+# information account gdrive
+function user_gdrive() {
+  User=$(gdrive about | grep User: | awk '{print $2,$3}')
+  Email=$(gdrive about | grep User: | awk '{print $4}')
+  Used=$(gdrive about | grep Used: | awk '{print $2,$3}')
+  Free=$(gdrive about | grep Free: | awk '{print $2,$3}')
+  Total=$(gdrive about | grep Total: | awk '{print $2,$3}')
+  echo -e "${BB}[${NC}${PB} ᴜꜱᴇʀ ${NC}${BB}]${NC} $User"
+  echo -e "${BB}[${NC}${PB} ᴇᴍᴀɪʟ ${NC}${BB}]${NC} $Email"
+  echo -e "${BB}[${NC}${PB} ᴜꜱᴇᴅ ${NC}${BB}]${NC} $Used"
+  echo -e "${BB}[${NC}${PB} ꜰʀᴇᴇ ${NC}${BB}]${NC} $Free"
+  echo -e "${BB}[${NC}${PB} ᴛᴏᴛᴀʟ ${NC}${BB}]${NC} $Total"
+}
+
 # Setup token
 function add_token() {
   print_install "ᴀᴅᴅ ɪᴅ ᴀᴘɪ ᴛᴏᴋᴇɴ"
@@ -74,7 +87,8 @@ function install_gdrive() {
   download_file $ID_api_gd /root/.gdrive/token_v2.json
   chmod +x gdrive
   cd
-  gdrive about
+  print_info "ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴀᴄᴄᴏᴜɴᴛ"
+  user_gdrive
   print_success "ɪɴꜱᴛᴀʟʟ ɢᴅʀɪᴠᴇ"
 }
 add_token
