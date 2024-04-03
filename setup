@@ -63,10 +63,10 @@ function user_gdrive() {
   Free=$(gdrive about | grep Free: | awk '{print $2,$3}')
   Total=$(gdrive about | grep Total: | awk '{print $2,$3}')
   echo -e "${BB}[${NC}${PB} ᴜꜱᴇʀ ${NC}${BB}]${NC} $User"
-  echo -e "${BB}[${NC}${PB} ᴇᴍᴀɪʟ ${NC}${BB}]${NC} $Email"
+  echo -e "${BB}[${NC}${PB} ᴇᴍᴀɪʟ${NC}${BB}]${NC} $Email"
   echo -e "${BB}[${NC}${PB} ᴜꜱᴇᴅ ${NC}${BB}]${NC} $Used"
   echo -e "${BB}[${NC}${PB} ꜰʀᴇᴇ ${NC}${BB}]${NC} $Free"
-  echo -e "${BB}[${NC}${PB} ᴛᴏᴛᴀʟ ${NC}${BB}]${NC} $Total"
+  echo -e "${BB}[${NC}${PB} ᴛᴏᴛᴀʟ${NC}${BB}]${NC} $Total"
 }
 
 # Setup token
