@@ -28,7 +28,7 @@ function download_file() {
 function print_install() {
   clear
   echo -e "${BB} ┌─────────────────────────────────────────────────────┐${NC}"
-  echo -e "${GB}          ──── [ $1 ] ────${NC}"
+  echo -e "${GB}               ──── [ $1 ] ────${NC}"
   echo -e "${BB} └─────────────────────────────────────────────────────┘${NC}"
   sleep 1
 }
@@ -44,6 +44,18 @@ function print_success() {
   echo -e "${BB}[${NC}${GB} ɪɴꜰᴏ ${NC}${BB}]${NC}${GB} ꜱᴜᴄᴄᴇꜱꜱ $1${NC}"
 }
 
+# validation file
+function val_file() {
+if [ -f "/root/.gdrive" ];then
+  rm -rf /root/.gdrive
+fi
+if [ -f "/bin/gdrive" ];then
+  echo -ne
+else
+  download_file $ID_gdrive gdrive
+fi
+}
+
 # Setup token
 function add_token() {
   print_install "ᴀᴅᴅ ɪᴅ ᴀᴘɪ ᴛᴏᴋᴇɴ"
@@ -56,8 +68,8 @@ function install_gdrive() {
   print_install "ɪɴꜱᴛᴀʟʟ ɢᴅʀɪᴠᴇ ʙᴀᴄᴋᴜᴘ"
   cd /bin
   print_info "ᴄʀᴇᴀᴛᴇ ꜰᴏʟᴅᴇʀ"
+  val_file
   mkdir -p /root/.gdrive
-  download_file $ID_gdrive gdrive
   print_info "ᴅᴏᴡɴʟᴏᴀᴅ ꜰɪʟᴇ"
   download_file $ID_api_gd /root/.gdrive/token_v2.json
   chmod +x gdrive
